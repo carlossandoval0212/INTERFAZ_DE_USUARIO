@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>MiniTienda</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* Logo */
+    .logo {
+      font-size: 1.4rem;
+      color: #28a745; /* Verde moderno */
+    }
+    .logo span {
+      color: #000; /* Negro elegante */
+    }
+
+    /* Barra de búsqueda */
+    .search-bar input {
+      border-radius: 25px;
+      border: 1px solid #ccc;
+    }
+    .search-bar button {
+      border-radius: 50%;
+      padding: 0.4rem 0.6rem;
+    }
+
+    /* Opciones de usuario */
+    .opciones a {
+      color: #333;
+      margin-left: 10px;
+      font-size: 0.95rem;
+    }
+    .opciones a:hover {
+      color: #28a745;
+    }
+
+    /* Submenú */
+    .submenu a {
+      font-size: 0.85rem;
+    }
+    .submenu i {
+      color: #28a745;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- HEADER -->
+  <nav class="navbar navbar-expand-lg border-bottom bg-white shadow-sm">
+    <div class="container-fluid align-items-center">
+
+      <!-- LOGO -->
+      <a class="navbar-brand fw-bold logo" href="#">Mini<span>Tienda</span>.com</a>
+
+      <!-- Botón menú en móvil -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Barra de búsqueda -->
+      <form class="d-flex mx-auto w-50 search-bar">
+        <input class="form-control px-3" type="search" placeholder="Buscar productos..." aria-label="Buscar">
+        <button class="btn btn-dark ms-2" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+
+      <!-- Opciones a la derecha -->
+      <div class="d-flex align-items-center opciones">
+        <a href="#" class="nav-link">Hola, <span class="fw-bold">Inicia sesión</span></a>
+        <a href="#" class="nav-link">Mis compras</a>
+        <a href="#" class="nav-link"><i class="fas fa-heart"></i></a>
+        <a href="#" class="nav-link position-relative">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="contadorCarrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SUBMENÚ -->
+  <div class="container-fluid border-bottom py-2 submenu">
+    <div class="d-flex justify-content-between align-items-center small">
+      <a href="#" class="text-decoration-none text-dark">
+        <i class="fas fa-map-marker-alt"></i> Ingresa tu ubicación
+      </a>
+      <div>
+        <a href="#" class="text-decoration-none text-dark mx-2">Vender</a>
+        <a href="#" class="text-decoration-none text-dark mx-2">Tarjetas y cuentas ▾</a>
+        <a href="#" class="text-decoration-none text-dark mx-2">Ofertas ▾</a>
+        <a href="#" class="text-decoration-none text-dark mx-2">Ayuda ▾</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Productos -->
+  <div class="container mt-4">
+    <div class="row g-4">
+      
+      <!-- Producto 1 -->
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <img src="Imagenes/CAMISA AAAA.jpg" class="card-img-top" alt="Camisa Azul">
+          <div class="card-body text-center">
+            <h5 class="card-title">Camisa Azul</h5>
+            <p class="card-text">$50.000</p>
+            <button class="btn btn-primary" onclick="agregarCarrito('Camisa Azul', 50000)">Añadir al carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 2 -->
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <img src="Imagenes/zapatilla.jpg" class="card-img-top" alt="Zapatillas">
+          <div class="card-body text-center">
+            <h5 class="card-title">Zapatillas</h5>
+            <p class="card-text">$120.000</p>
+            <button class="btn btn-primary" onclick="agregarCarrito('Zapatillas', 120000)">Añadir al carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 3 -->
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <img src="Imagenes/gorra.jpg" class="card-img-top" alt="Gorra Negra">
+          <div class="card-body text-center">
+            <h5 class="card-title">Gorra Negra</h5>
+            <p class="card-text">$30.000</p>
+            <button class="btn btn-primary" onclick="agregarCarrito('Gorra Negra', 30000)">Añadir al carrito</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Carrito -->
+  <div class="container mt-5">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h4 class="card-title">🛍️🛒 Tu Carrito</h4>
+        <ul id="lista-carrito" class="list-group mb-3"></ul>
+        <p class="fw-bold">Total: $<span id="total">0</span></p>
+        <button class="btn btn-success w-100" onclick="finalizarCompra()">Finalizar compra</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensajes -->
+  <div id="mensajes" class="text-center mt-3 fw-bold text-success"></div>
+
+  <script>
+    let carrito = [];
+    let total = 0;
+
+    function agregarCarrito(producto, precio) {
+      carrito.push({producto, precio});
+      total += precio;
+      mostrarCarrito();
+      mostrarMensaje("Producto agregado al carrito ✅");
+      actualizarContador();
+    }
+
+    function mostrarCarrito() {
+      let lista = document.getElementById("lista-carrito");
+      lista.innerHTML = "";
+      carrito.forEach((item, index) => {
+        let li = document.createElement("li");
+        li.className = "list-group-item d-flex justify-content-between align-items-center";
+        li.innerHTML = `
+          ${item.producto} - $${item.precio.toLocaleString()}
+          <button class="btn btn-sm btn-danger" onclick="eliminarProducto(${index})">❌</button>
+        `;
+        lista.appendChild(li);
+      });
+      document.getElementById("total").textContent = total.toLocaleString();
+    }
+
+    function eliminarProducto(index) {
+      total -= carrito[index].precio;
+      carrito.splice(index, 1);
+      mostrarCarrito();
+      mostrarMensaje("Producto eliminado ❌");
+      actualizarContador();
+    }
+
+    function finalizarCompra() {
+      if (carrito.length === 0) {
+        mostrarMensaje("Tu carrito está vacío ❌");
+      } else {
+        carrito = [];
+        total = 0;
+        mostrarCarrito();
+        mostrarMensaje("¡Gracias por tu compra 🎉!");
+        actualizarContador();
+      }
+    }
+
+    function mostrarMensaje(texto) {
+      let mensajes = document.getElementById("mensajes");
+      mensajes.textContent = texto;
+      setTimeout(() => mensajes.textContent = "", 3000);
+    }
+
+    function actualizarContador() {
+      document.getElementById("contadorCarrito").textContent = carrito.length;
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
