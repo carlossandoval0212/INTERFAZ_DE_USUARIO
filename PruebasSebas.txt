@@ -31,3 +31,7 @@ git log --oneline = muestra mas resumida la informacion
 
 git branch = muestra en donde estamos y su rama
 git checkout -b <nombre de la rama> = Asi se crea una rama
+
+cat <Nombrearchivo> = nos mostrara el contenido de nuestro archivo
+
+git checkout main = el ultimo nombre es el nombre de la rama a la cual quiero ir
