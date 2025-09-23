@@ -39,4 +39,4 @@ git checkout main = el ultimo nombre es el nombre de la rama a la cual quiero ir
 Ya miramos que se puedes crear las ramas, ahora para pasar esta informacion desde la ramaSebastian
 se debe hacer el merge, lo primero debo estar en la rama principal, en este caso el main
 y luego hacer 
-gir merge <nombre de la rama a unir>
+git merge <nombre de la rama a unir>
