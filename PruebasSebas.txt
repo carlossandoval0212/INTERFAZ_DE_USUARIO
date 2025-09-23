@@ -1,2 +1,33 @@
+Todo esto con GIT BASH
+
+
 Carlos esto es para ver si pude o no con esta monda.
-Ahora modificamos despues de darle git add
+Ahora modificamos despues de darle git ad
+
+Comandos
+ls = para mostrar los archivos
+cd <nombre> = para abrir el archivo
+cd .. = para devolvernos uno arriba
+pwd = nos muestra la ruta en la cual estamos
+ls -a = muestra hasta los archivos ocultos
+code . = abre el editor de codigo seleccionado
+git status = nos muestra como estan nuestro archivos, si estan guardados o no
+
+se pueden crear archivos en el editor de codigo, y al darle status nos dira como esta apareciendo
+si aparece en rojo es que no lo esta siguiendo git, por lo tanto se debe darle
+
+git add <nombre del archivo con su extension>
+git commit -m "Mensaje Importante de que estamos haciendo"
+
+git rm <nombre archivo> = para borrar un archivo 
+git restore --stage <Nombre del archivo> = restaura un archivo eliminado
+
+mv <Nombrearchivo> <NuevoNombre> = asi se renombra un archivo todos con su extension 
+la forma mas rapida
+git mv <Nombrearchivo> <NuevoNombre>
+
+git log = muestra quien ha hecho cambios y todo est
+git log --oneline = muestra mas resumida la informacion
+
+git branch = muestra en donde estamos y su rama
+git checkout -b <nombre de la rama> = Asi se crea una rama
