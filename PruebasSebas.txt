@@ -13,8 +13,65 @@ ls -a = muestra hasta los archivos ocultos
 code . = abre el editor de codigo seleccionado
 git status = nos muestra como estan nuestro archivos, si estan guardados o no
 
-se pueden crear archivos en el editor de codigo, y al darle status nos dira como esta apareciendo
-si aparece en rojo es que no lo esta siguiendo git, por lo tanto se debe darle
+________________________________________________________________________________
+Pasos esto se hace en el GIT Bash
+1. Tener Git instalado y Git Bash (o terminal) abierto.
+
+2. Tener una cuenta en GitHub.
+
+3. (Opcional) Tener configurado git config --global user.name y user.email.
+    git config --global user.name "Tu Nombre"
+    git config --global user.email "tu@email.com"
+
+4. Crear o conseguir el repositorio en GitHub. Si eres el dueño: crea repo nuevo en GitHub (New repository) y copia la URL (HTTPS o SSH).
+
+5. Clonar el repositorio (dos opciones)
+    Opción A — HTTPS (rápido, pide usuario/contraseña o token)
+    git clone https://github.com/usuario/repo.git
+
+    Opción B — SSH (recomendado si ya añadiste tu clave SSH en GitHub)
+    git clone git@github.com:usuario/repo.git
+
+6. Entra a la carpeta: Esto se debe hacer despues de clonar, se debe guardar en una carpeta en el pc.
+
+7. code .         # abre VS Code en la carpeta (si lo usas)
+
+8. Ver estado:
+    git status
+
+9. Agregar archivo al área de stage:
+    git add <archivoa subir>   = # o agregar todos los cambios
+
+10. Hacer commit con mensaje claro:
+    git commit -m "Agregar nueva página de interfaz: nueva-pagina.html"
+
+11. Subir (push) tus cambios al remoto
+    Si es la primera vez que subes a main y main ya existe: pero primero ir a la rama que principal
+    git push origin main
+_________________________________________________________________________
+
+12. Si estás en una rama nueva (recomendado para trabajo en equipo)
+    Crea y cámbiate a la rama:
+
+    git checkout -b ramaTuNombre        # ya en ramaTuNombre realiza cambios, git add, git commit
+    git push -u origin ramaTuNombre
+
+13. Flujo colaborativo (si trabajas con compañeros)
+    Trabajas en ramaTuNombre:
+
+    git checkout -b ramaTuNombre
+    git add .
+    git commit -m "Funcionalidad X"
+    git push -u origin ramaTuNombre
+
+    En GitHub: abres Pull request para que el dueño revise y haga merge.
+
+    Una vez aprobado, puedes actualizar main local:
+
+    git checkout main
+    git pull origin main
+
+_________________________________________________________________________
 
 git add <nombre del archivo con su extension>
 git commit -m "Mensaje Importante de que estamos haciendo"
@@ -40,3 +97,12 @@ Ya miramos que se puedes crear las ramas, ahora para pasar esta informacion desd
 se debe hacer el merge, lo primero debo estar en la rama principal, en este caso el main
 y luego hacer 
 git merge <nombre de la rama a unir>
+
+ahora para subir primero ir a la rama principal con el Comandos
+git branch  = esto me muestra las ramas 
+
+git pull = esto para actualizar antes de cargar
+
+git merge <nombredelarama>
+
+git push origin main = ya con esto se cargan los archivos
