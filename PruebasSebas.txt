@@ -106,3 +106,69 @@ git pull = esto para actualizar antes de cargar
 git merge <nombredelarama>
 
 git push origin main = ya con esto se cargan los archivos
+
+------------------------------------------------------------------------------
+Lo que sigue es los pasos para subir un archivo a un repositorio
+APARTADO DE GITHUB
+
+ GIT CLONE
+ Sirve para clonar un repositorio de internet, para que este en nuestra maquina
+ 1. Copiar la url del repositorio que deseamos copiar.
+ 2. Vamos a la terminal de GIT BASH,  buscamos la carpeta o nos posicionamos en donde va a quedar guardado el repositorio y colocamos= code .       Para abrir visual
+ 3. En el visual  estudio code se abrira la carpeta
+ 4. en el git bash escribimos git clone direccionurl
+ 5. le damos ls, para confirmar que se clono el repositorio.
+ 6. una vez identificado el repositorio ingresamos a el.
+ 
+ GIT PUSH
+ Este comando lo que nos permite es subir los cambios realizados por mi, al repositorio en la web
+ 1. Si hago un cambio o creo un archivo nuevo, debo hacer git add nombreDelArchivo.
+ 2. Verificamos con git status 
+ 3. se hace un commit, git commit -m "Descripcion"
+ 4. Lo primero es configurar el usuario de GIT. 
+    Verificar que tengo bien el nombre que esta creado en la cuenta de GITHUB
+    verificar con:
+    git config --global user.name
+        esto nos dara el nombre de usuario
+    git config --global user.email
+        esto nos dara el correo electronico
+5. para cambiarlos es asi:
+    git config --global user.email "correo"
+    git config --global user.name "nonbre"
+6. para subirlo le decimos asi, en la misma carpeta
+    git push origin master
+    (verificar con el token en el github) -> en el github -> perfil ->  setting -> Developer settings -> Personal acces tokens-> tokens (classic)-> Generate a personal access token (maximo 30 dias)
+    seleccionar repo, basico. -> generar el token.
+    Esto nos dara un toquen que se llevara al momento de cargar.
+
+GIT PULL & GIT FETCH
+Esto es como hacer una actualizacion, los cambios que se han hecho desde otro usuario.
+1. git pull           otra forma git pull origin master   otra opcion git pull -u origin master
+2. git ls    = para comprobar que se actualizaron los demas archivos-
+Con este comando se hace la actualizacion y se cambia todos los archivos, es como hacer un commit directo y un merge
+tiene sus desventajas porque se podria presentar conflictos
+
+GIT FETCH
+es un paso que se quita con git pull, pero con este comando nos deja ver bien los cambios
+1. git fetch 
+    esto no nos muestra los cambios, nos toca movernos a la rama que se hizo el cambio
+2. git switch origin/master 
+3. aqui nos dice que lo hagamos en DETACH, esto es como hacer un archivo que no existe, pero sirve para editar, asi:
+   git switch --detach origin/master
+4. Esto creo una rama temporal en el visual studio, para poder visualizar los cambios y ver si me sirve
+5. Si los cambios nos sirven o no volvemos a la rama principal
+ git switch master
+ git pull
+ aparecera conflictos, que se solucionan y ya, luego se hace el commit
+ sincronizamos cambios con el git push
+
+ MIGRAR UN REPOSITORIO LOCAL A UN REMOTO.
+ touch nombrearchivo.txt para crear un archivo por consola
+ code .
+1. se crea un repositorio en github.
+2. se busca al crearlo una linea ..or push y se copia el primer enlace
+ algo asi => git remove .....
+3. lo pegamos en el gitbash
+4. ahora si le damos git remove -v 
+5. luego copiamos la 2 linea
+6. se copia la 3 linea 
